@@ -4,3 +4,4 @@ export * from './AccountStateFrozen';
 export * from './AccountStateTag';
 export * from './AccountStateUninitialized';
 export * from './loadAccountState';
+export * from './storeAccountState';

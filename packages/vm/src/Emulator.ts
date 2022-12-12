@@ -31,7 +31,7 @@ export interface RunGetMethodResult<S> {
 export class Emulator {
   constructor(
     readonly config: Cell,
-    readonly libraries: Cell | null,
+    readonly libraries: Cell | null = null,
     readonly verbosity: EmulatorVerbosityLevel = EmulatorVerbosityLevel.INFO,
   ) {}
 
