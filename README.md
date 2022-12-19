@@ -8,8 +8,8 @@ Tonkite is a toolkit for developing DApps for TON.
 
 ### Packages
 
-- `@types/types`: loaders, packers and interfaces for many `block.tlb` data types
-- `@types/vm`: TVM emulator 
+- [`@tonkite/types`](packages/types): loaders, packers and interfaces for many `block.tlb` data types
+- [`@tonkite/vm`](packages/vm): TVM emulator 
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
