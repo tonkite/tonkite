@@ -1,8 +1,7 @@
-import * as fs from 'fs';
-import * as path from 'path';
 import { Cell, BOC, Address, Coins, Utils } from 'ton3-core';
 import { EmulatorVerbosityLevel } from '../EmulatorVerbosityLevel';
 import crc16xmodem from 'crc/crc16xmodem';
+import { Buffer } from 'buffer';
 
 const ZERO_ADDRESS = new Address(
   '0:0000000000000000000000000000000000000000000000000000000000000000',
@@ -12,9 +11,8 @@ const createModule: (options: {
   wasmBinary: Buffer;
 }) => Promise<any> = require('../../artifacts/emulator-emscripten');
 
-const wasmBinary = fs.readFileSync(
-  path.join(__dirname, '../../artifacts/emulator-emscripten.wasm'),
-);
+const wasmBinaryPack = require('../../artifacts/emulator-emscripten.wasm.js');
+const wasmBinary = Buffer.from(wasmBinaryPack.wasmBinary, 'base64');
 
 type Pointer = unknown;
 
