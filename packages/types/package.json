@@ -1,6 +1,6 @@
 {
   "name": "@tonkite/types",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "source": "./src/index.ts",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -21,11 +21,11 @@
     "eslint-config-custom": "workspace:*",
     "jest": "^29.3.1",
     "jest-presets": "workspace:*",
-    "ton3-core": "^0.0.19",
+    "ton3-core": "^0.0.20",
     "tsconfig": "workspace:*",
     "typescript": "^4.5.2"
   },
   "peerDependencies": {
-    "ton3-core": "^0.0.19"
+    "ton3-core": "^0.0.20"
   }
 }
