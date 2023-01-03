@@ -1,11 +1,9 @@
 {
-  "name": "@tonkite/client-lite-api",
-  "version": "0.0.1",
-  "source": "./src/index.ts",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "name": "blockchain-client",
+  "private": true,
   "license": "Apache-2.0",
   "scripts": {
+    "dev": "ts-node src/index.ts",
     "build": "tsc",
     "clean": "rm -rf dist",
     "lint": "eslint *.ts*",
@@ -15,23 +13,27 @@
     "preset": "jest-presets/jest/node"
   },
   "dependencies": {
+    "@tonkite/client-lite-api": "workspace:^*",
+    "@tonkite/core": "workspace:^*",
     "@tonkite/lite-api": "workspace:^*",
-    "@tonkite/types": "workspace:^*"
+    "adnl": "0.0.11",
+    "lodash": "^4.17.21",
+    "p-queue": "^6.6.2",
+    "p-retry": "^4.6.2",
+    "ton3-core": "^0.0.21"
   },
   "devDependencies": {
-    "@tonkite/core": "workspace:^*",
+    "@types/debug": "^4.1.7",
     "@types/jest": "^29.2.3",
+    "@types/lodash": "^4.14.191",
     "@types/node": "^17.0.12",
+    "debug": "^4.3.4",
     "eslint": "^7.32.0",
     "eslint-config-custom": "workspace:*",
     "jest": "^29.3.1",
     "jest-presets": "workspace:*",
-    "ton3-core": "^0.0.20",
+    "ts-node": "^10.9.1",
     "tsconfig": "workspace:*",
     "typescript": "^4.5.2"
-  },
-  "peerDependencies": {
-    "@tonkite/core": "workspace:^*",
-    "ton3-core": "^0.0.20"
   }
 }
