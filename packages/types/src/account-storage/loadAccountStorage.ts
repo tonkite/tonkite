@@ -1,6 +1,6 @@
 import { Slice } from 'ton3-core';
 import { loadCurrencyCollection } from '../currency-collection';
-import { loadAccountState } from '../account-state/loadAccountState';
+import { loadAccountState } from '../account-state';
 import { AccountStorage } from './AccountStorage';
 
 export function loadAccountStorage(slice: Slice): AccountStorage {

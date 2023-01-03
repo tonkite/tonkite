@@ -1,5 +1,5 @@
 import { ShardAccount } from './ShardAccount';
-import { Slice } from 'ton3-core';
+import { BOC, Builder, Slice } from 'ton3-core';
 import { loadAccount } from '../account';
 
 /**

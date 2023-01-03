@@ -21,11 +21,11 @@
     "eslint-config-custom": "workspace:*",
     "jest": "^29.3.1",
     "jest-presets": "workspace:*",
-    "ton3-core": "^0.0.20",
+    "ton3-core": "^0.0.21",
     "tsconfig": "workspace:*",
     "typescript": "^4.5.2"
   },
   "peerDependencies": {
-    "ton3-core": "^0.0.20"
+    "ton3-core": "^0.0.21"
   }
 }

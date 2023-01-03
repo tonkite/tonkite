@@ -14,6 +14,11 @@ const createModule: (options: {
 const wasmBinaryPack = require('../../artifacts/emulator-emscripten.wasm.js');
 const wasmBinary = Buffer.from(wasmBinaryPack.wasmBinary, 'base64');
 
+export const createEmulatorModule = (): Promise<any> =>
+  createModule({
+    wasmBinary,
+  });
+
 type Pointer = unknown;
 
 const writeToCString = (mod: any, data: string): Pointer => {
@@ -49,6 +54,7 @@ interface EmulateTransactionParams {
 }
 
 export async function emulateTransaction(
+  emulatorModule: any,
   config: Cell,
   libs: Cell | null,
   verbosityLevel: EmulatorVerbosityLevel,
@@ -56,10 +62,6 @@ export async function emulateTransaction(
   message: Cell,
   extra: Partial<EmulateTransactionParams> = {},
 ): Promise<EmulationResult> {
-  const emulatorModule = await createModule({
-    wasmBinary,
-  });
-
   const allocatedPointers: Pointer[] = [];
 
   const trackPointer = (pointer: Pointer): Pointer => {
@@ -139,6 +141,7 @@ export interface RunGetMethodParams {
 }
 
 export async function runGetMethod(
+  emulatorModule: any,
   config: Cell,
   code: Cell,
   data: Cell,
@@ -147,10 +150,6 @@ export async function runGetMethod(
   stack: Cell,
   extraParams: Partial<RunGetMethodParams>,
 ): Promise<RunGetMethodResult> {
-  const emulatorModule = await createModule({
-    wasmBinary,
-  });
-
   const trackPointer = (pointer: Pointer): Pointer => {
     allocatedPointers.push(pointer);
     return pointer;

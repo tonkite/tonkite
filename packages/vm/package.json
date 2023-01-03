@@ -21,14 +21,14 @@
     "eslint-config-custom": "workspace:*",
     "jest": "^29.3.1",
     "jest-presets": "workspace:*",
-    "ton3-core": "^0.0.20",
+    "ton3-core": "^0.0.21",
     "ts-node": "^10.9.1",
     "tsconfig": "workspace:*",
     "typescript": "^4.5.2"
   },
   "peerDependencies": {
     "@tonkite/types": "workspace:*",
-    "ton3-core": "^0.0.20"
+    "ton3-core": "^0.0.21"
   },
   "dependencies": {
     "buffer": "^6.0.3",

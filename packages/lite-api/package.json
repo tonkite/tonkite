@@ -1,0 +1,42 @@
+{
+  "name": "@tonkite/lite-api",
+  "version": "0.0.4",
+  "source": "./src/index.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "license": "Apache-2.0",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "lint": "eslint *.ts*",
+    "test": "jest"
+  },
+  "jest": {
+    "preset": "jest-presets/jest/node"
+  },
+  "devDependencies": {
+    "@tonkite/types": "workspace:^*",
+    "@types/debug": "^4.1.7",
+    "@types/jest": "^29.2.3",
+    "@types/node": "^17.0.12",
+    "adnl": "0.0.11",
+    "debug": "^4.3.4",
+    "eslint": "^7.32.0",
+    "eslint-config-custom": "workspace:*",
+    "jest": "^29.3.1",
+    "jest-presets": "workspace:*",
+    "ton3-core": "^0.0.21",
+    "ts-jest": "^29.0.3",
+    "ts-node": "^10.9.1",
+    "tsconfig": "workspace:*",
+    "typescript": "^4.5.2"
+  },
+  "peerDependencies": {
+    "@tonkite/types": "workspace:^*",
+    "adnl": "0.0.11",
+    "ton3-core": "^0.0.21"
+  },
+  "dependencies": {
+    "crc-32": "^1.2.2"
+  }
+}

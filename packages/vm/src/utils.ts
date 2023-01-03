@@ -3,7 +3,7 @@ import process from 'process';
 import util from 'util';
 
 function normalize(value: unknown): any {
-  if (value === null) {
+  if (value === null || typeof value === 'undefined') {
     return null;
   }
 
@@ -50,7 +50,7 @@ function normalize(value: unknown): any {
     );
   }
 
-  throw new Error('uknown' + typeof value);
+  throw new Error(`Cannot dump value (type "${typeof value}")`);
 }
 
 export function dump(value: unknown) {

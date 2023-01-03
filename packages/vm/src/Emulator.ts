@@ -1,6 +1,7 @@
-import { BOC, Cell, Coins, Utils } from 'ton3-core';
+import { BOC, Cell, Utils } from 'ton3-core';
 import { parseShardAccount, parseTransaction } from '@tonkite/types';
 import {
+  createEmulatorModule,
   emulateTransaction,
   runGetMethod,
   RunGetMethodParams,
@@ -29,14 +30,24 @@ export interface RunGetMethodResult<S> {
 }
 
 export class Emulator {
-  constructor(
+  private constructor(
+    private readonly emulatorModule: any,
     readonly config: Cell,
-    readonly libraries: Cell | null = null,
-    readonly verbosity: EmulatorVerbosityLevel = EmulatorVerbosityLevel.INFO,
+    readonly libraries: Cell | null,
+    readonly verbosity: EmulatorVerbosityLevel,
   ) {}
+
+  static async create(
+    config: Cell,
+    libraries: Cell | null = null,
+    verbosity: EmulatorVerbosityLevel = EmulatorVerbosityLevel.INFO,
+  ): Promise<Emulator> {
+    return new Emulator(await createEmulatorModule(), config, libraries, verbosity);
+  }
 
   async emulateTransaction(shardAccount: Cell, message: Cell) {
     const { output, logs, ...rest } = await emulateTransaction(
+      this.emulatorModule,
       this.config,
       this.libraries,
       this.verbosity,
@@ -76,6 +87,7 @@ export class Emulator {
     }
 
     const { output, logs } = await runGetMethod(
+      this.emulatorModule,
       this.config,
       account.storage.state.code,
       account.storage.state.data,

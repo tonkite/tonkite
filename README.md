@@ -4,11 +4,22 @@
 
 ## What's inside?
 
-Tonkite is a toolkit for developing DApps for TON.
+**Tonkite** is a toolkit for developing DApps for TON.
 
 ### Packages
 
-- [`@tonkite/types`](packages/types): loaders, packers and interfaces for many `block.tlb` data types
+Core components:
+
+- [`@tonkite/core`](packages/core): core components (basic types, interfaces, etc.)
+
+Clients:
+
+- [`@tonkite/client-lite-api`](packages/client-lite-api): Lite API based TON client
+
+Low-level components:
+
+- [`@tonkite/lite-api`](packages/lite-api): low-level Lite API client
+- [`@tonkite/types`](packages/types): low-level loaders, packers and interfaces for many `block.tlb` data types
 - [`@tonkite/vm`](packages/vm): TVM emulator
 
 ## Authors
