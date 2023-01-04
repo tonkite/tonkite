@@ -16,7 +16,7 @@
     "@tonkite/client-lite-api": "workspace:^*",
     "@tonkite/core": "workspace:^*",
     "@tonkite/lite-api": "workspace:^*",
-    "adnl": "0.0.11",
+    "adnl": "^0.0.12",
     "lodash": "^4.17.21",
     "p-queue": "^6.6.2",
     "p-retry": "^4.6.2",

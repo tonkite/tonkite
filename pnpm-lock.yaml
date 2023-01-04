@@ -21,7 +21,7 @@ importers:
       '@types/jest': ^29.2.3
       '@types/lodash': ^4.14.191
       '@types/node': ^17.0.12
-      adnl: 0.0.11
+      adnl: ^0.0.12
       debug: ^4.3.4
       eslint: ^7.32.0
       eslint-config-custom: workspace:*
@@ -38,7 +38,7 @@ importers:
       '@tonkite/client-lite-api': link:../../packages/client-lite-api
       '@tonkite/core': link:../../packages/core
       '@tonkite/lite-api': link:../../packages/lite-api
-      adnl: 0.0.11
+      adnl: 0.0.12
       lodash: 4.17.21
       p-queue: 6.6.2
       p-retry: 4.6.2
@@ -55,35 +55,6 @@ importers:
       jest-presets: link:../../packages/jest-presets
       ts-node: 10.9.1_7cep2inysldxstbcrxlp3njwym
       tsconfig: link:../../packages/tsconfig
-      typescript: 4.9.3
-
-  packages/client-api-v4:
-    specifiers:
-      '@tonkite/core': workspace:^*
-      '@tonkite/types': workspace:^*
-      '@types/jest': ^29.2.3
-      '@types/node': ^17.0.12
-      axios: ^1.2.2
-      eslint: ^7.32.0
-      eslint-config-custom: workspace:*
-      jest: ^29.3.1
-      jest-presets: workspace:*
-      ton3-core: ^0.0.21
-      tsconfig: workspace:*
-      typescript: ^4.5.2
-    dependencies:
-      '@tonkite/types': link:../types
-      axios: 1.2.2
-    devDependencies:
-      '@tonkite/core': link:../core
-      '@types/jest': 29.2.3
-      '@types/node': 17.0.45
-      eslint: 7.32.0
-      eslint-config-custom: link:../eslint-config-custom
-      jest: 29.3.1_@types+node@17.0.45
-      jest-presets: link:../jest-presets
-      ton3-core: 0.0.21
-      tsconfig: link:../tsconfig
       typescript: 4.9.3
 
   packages/client-lite-api:
@@ -166,7 +137,7 @@ importers:
       '@types/debug': ^4.1.7
       '@types/jest': ^29.2.3
       '@types/node': ^17.0.12
-      adnl: 0.0.11
+      adnl: ^0.0.12
       crc-32: ^1.2.2
       debug: ^4.3.4
       eslint: ^7.32.0
@@ -185,7 +156,7 @@ importers:
       '@types/debug': 4.1.7
       '@types/jest': 29.2.3
       '@types/node': 17.0.45
-      adnl: 0.0.11
+      adnl: 0.0.12
       debug: 4.3.4
       eslint: 7.32.0
       eslint-config-custom: link:../eslint-config-custom
@@ -1211,8 +1182,8 @@ packages:
     hasBin: true
     dev: true
 
-  /adnl/0.0.11:
-    resolution: {integrity: sha512-NP5JvapJgvyvxVj+Zg+qhYrUSdxZliqrO1IMXx3ncwrXEmGUMT0w+Y4wEHv8E/jmt7ssmAb9jQYiKgOqU24DJA==}
+  /adnl/0.0.12:
+    resolution: {integrity: sha512-YaVjFFcTHXIGKgzQZXEbFhjJxEKrHYn32h2xSdc3fW61laFcokhqAiUxSNBOKQjGk0cWlI6BRZz6UCTgNNUMRQ==}
     dependencies:
       '@noble/ed25519': 1.7.1
       aes-js: 3.1.2
@@ -1221,7 +1192,6 @@ packages:
       events: 3.3.0
       isomorphic-ws: 5.0.0_ws@8.11.0
       tweetnacl: 1.0.3
-      url: 0.11.0
       ws: 8.11.0
     transitivePeerDependencies:
       - bufferutil
@@ -1347,23 +1317,9 @@ packages:
     resolution: {integrity: sha512-Z7tMw1ytTXt5jqMcOP+OQteU1VuNK9Y02uuJtKQ1Sv69jXQKKg5cibLwGJow8yzZP+eAc18EmLGPal0bp36rvQ==}
     engines: {node: '>=8'}
 
-  /asynckit/0.4.0:
-    resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
-    dev: false
-
   /axe-core/4.5.2:
     resolution: {integrity: sha512-u2MVsXfew5HBvjsczCv+xlwdNnB1oQR9HlAcsejZttNjKKSkeDNVwB1vMThIUIFI9GoT57Vtk8iQLwqOfAkboA==}
     engines: {node: '>=4'}
-    dev: false
-
-  /axios/1.2.2:
-    resolution: {integrity: sha512-bz/J4gS2S3I7mpN/YZfGFTqhXTYzRho8Ay38w2otuuDR322KzFIWm/4W2K6gIwvWaws5n+mnb7D1lN9uD+QH6Q==}
-    dependencies:
-      follow-redirects: 1.15.2
-      form-data: 4.0.0
-      proxy-from-env: 1.1.0
-    transitivePeerDependencies:
-      - debug
     dev: false
 
   /axobject-query/2.2.0:
@@ -1581,13 +1537,6 @@ packages:
   /color-name/1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
 
-  /combined-stream/1.0.8:
-    resolution: {integrity: sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==}
-    engines: {node: '>= 0.8'}
-    dependencies:
-      delayed-stream: 1.0.0
-    dev: false
-
   /concat-map/0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
 
@@ -1692,11 +1641,6 @@ packages:
     dependencies:
       has-property-descriptors: 1.0.0
       object-keys: 1.1.1
-    dev: false
-
-  /delayed-stream/1.0.0:
-    resolution: {integrity: sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==}
-    engines: {node: '>=0.4.0'}
     dev: false
 
   /detect-newline/3.1.0:
@@ -2229,25 +2173,6 @@ packages:
 
   /flatted/3.2.7:
     resolution: {integrity: sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==}
-
-  /follow-redirects/1.15.2:
-    resolution: {integrity: sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==}
-    engines: {node: '>=4.0'}
-    peerDependencies:
-      debug: '*'
-    peerDependenciesMeta:
-      debug:
-        optional: true
-    dev: false
-
-  /form-data/4.0.0:
-    resolution: {integrity: sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww==}
-    engines: {node: '>= 6'}
-    dependencies:
-      asynckit: 0.4.0
-      combined-stream: 1.0.8
-      mime-types: 2.1.35
-    dev: false
 
   /fs.realpath/1.0.0:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
@@ -3270,18 +3195,6 @@ packages:
       braces: 3.0.2
       picomatch: 2.3.1
 
-  /mime-db/1.52.0:
-    resolution: {integrity: sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg==}
-    engines: {node: '>= 0.6'}
-    dev: false
-
-  /mime-types/2.1.35:
-    resolution: {integrity: sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw==}
-    engines: {node: '>= 0.6'}
-    dependencies:
-      mime-db: 1.52.0
-    dev: false
-
   /mimic-fn/2.1.0:
     resolution: {integrity: sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==}
     engines: {node: '>=6'}
@@ -3561,21 +3474,9 @@ packages:
       react-is: 16.13.1
     dev: false
 
-  /proxy-from-env/1.1.0:
-    resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
-    dev: false
-
-  /punycode/1.3.2:
-    resolution: {integrity: sha512-RofWgt/7fL5wP1Y7fxE7/EmTLzQVnB0ycyibJ0OOHIlJqTNzglYFxVwETOcIoJqJmpDXJ9xImDv+Fq34F/d4Dw==}
-
   /punycode/2.1.1:
     resolution: {integrity: sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==}
     engines: {node: '>=6'}
-
-  /querystring/0.2.0:
-    resolution: {integrity: sha512-X/xY82scca2tau62i9mDyU9K+I+djTMUsvwf7xnUX5GLvVzgJybOJf4Y6o9Zx3oJK/LSXg5tTZBjwzqVPaPO2g==}
-    engines: {node: '>=0.4.x'}
-    deprecated: The querystring API is considered Legacy. new code should use the URLSearchParams API instead.
 
   /queue-microtask/1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
@@ -4122,12 +4023,6 @@ packages:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
     dependencies:
       punycode: 2.1.1
-
-  /url/0.11.0:
-    resolution: {integrity: sha512-kbailJa29QrtXnxgq+DdCEGlbTeYM2eJUxsz6vjZavrCYPMIFHMKQmSKYAIuUK2i7hgPm28a8piX5NTUtM/LKQ==}
-    dependencies:
-      punycode: 1.3.2
-      querystring: 0.2.0
 
   /v8-compile-cache-lib/3.0.1:
     resolution: {integrity: sha512-wa7YjyUGfNZngI/vtK0UHAN+lgDCxBPCylVXGp0zu59Fz5aiGtNXaq3DhIov063MorB+VfufLh3JlF2KdTK3xg==}
