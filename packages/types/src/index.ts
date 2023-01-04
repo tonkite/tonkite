@@ -9,6 +9,7 @@ export * from './extra-currency-collection';
 export * from './future-split-merge';
 export * from './hash-update';
 export * from './message';
+export * from './message-address-external';
 export * from './shard-account';
 export * from './shard-description';
 export * from './shard-hashes';
