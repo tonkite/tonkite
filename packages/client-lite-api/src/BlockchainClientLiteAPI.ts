@@ -22,7 +22,7 @@ import { TransactionCursor } from './TransactionCursor';
 export class BlockchainClientLiteAPI implements BlockchainClient {
   constructor(private readonly liteClient: LiteClient) {}
 
-  async getLatestBlock(): Promise<BlockId> {
+  async getMasterchainInfo(): Promise<BlockId> {
     const masterchainInfo = await this.liteClient.getMasterchainInfo();
     return {
       workchain: masterchainInfo.last.workchain,
@@ -33,7 +33,7 @@ export class BlockchainClientLiteAPI implements BlockchainClient {
     };
   }
 
-  async getShards(blockId: BlockId): Promise<BlockId[]> {
+  async getAllShardsInfo(blockId: BlockId): Promise<BlockId[]> {
     const allShards = await this.liteClient.getAllShardsInfo({
       workchain: blockId.workchain,
       shard: blockId.shard,
@@ -57,6 +57,24 @@ export class BlockchainClientLiteAPI implements BlockchainClient {
         ),
       )
       .flat();
+  }
+
+  async lookupBlock(blockId: Pick<BlockId, 'workchain' | 'shard' | 'seqno'>): Promise<BlockId> {
+    const result = await this.liteClient.lookupBlock({
+      id: {
+        workchain: blockId.workchain,
+        shard: blockId.shard,
+        seqno: blockId.seqno,
+      },
+    });
+
+    return {
+      workchain: result.id.workchain,
+      shard: result.id.shard,
+      seqno: result.id.seqno,
+      rootHash: result.id.root_hash,
+      fileHash: result.id.file_hash,
+    };
   }
 
   async getAccountState(account: Address, blockId: BlockId): Promise<Account> {

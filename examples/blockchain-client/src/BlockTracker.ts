@@ -14,7 +14,13 @@ export class BlockTracker {
 
   importTransactionsQueue = new PQueue({ concurrency: 1 });
 
-  async importBlockTransactions(blockId: BlockId) {
+  async importBlockTransactions(workchain: number, shard: bigint, seqno: number) {
+    const blockId = await this.blockchainClient.lookupBlock({
+      workchain,
+      shard,
+      seqno,
+    });
+
     await this.importTransactionsQueue.add(() =>
       PRetry(
         async () => {
@@ -65,11 +71,11 @@ export class BlockTracker {
     const masterBlockKey = getBlockKey(masterBlock);
 
     // Import masterchain block.
-    await this.importBlockTransactions(masterBlock);
+    await this.importBlockTransactions(masterBlock.workchain, masterBlock.shard, masterBlock.seqno);
 
     let cleanupNeeded = false;
 
-    const shards = await this.blockchainClient.getShards(masterBlock);
+    const shards = await this.blockchainClient.getAllShardsInfo(masterBlock);
 
     for (const shard of shards) {
       const shardBlockKey = getBlockKey(shard);
@@ -78,11 +84,11 @@ export class BlockTracker {
       // Import workchain blocks.
       if (previousSeqno) {
         for (let seqno = previousSeqno + 1; seqno <= shard.seqno; seqno++) {
-          await this.importBlockTransactions({ ...shard, seqno });
+          await this.importBlockTransactions(shard.workchain, shard.shard, seqno);
         }
       } else {
         // either after split/merge or first run
-        await this.importBlockTransactions(shard);
+        await this.importBlockTransactions(shard.workchain, shard.shard, shard.seqno);
         cleanupNeeded = true;
       }
 
@@ -107,13 +113,14 @@ export class BlockTracker {
   }
 
   async tick() {
-    const masterBlock = await this.blockchainClient.getLatestBlock();
+    const masterBlock = await this.blockchainClient.getMasterchainInfo();
     const masterBlockKey = getBlockKey(masterBlock);
 
     const previousSeqno = this.shardsCursors.get(masterBlockKey);
 
     if (previousSeqno) {
       for (let seqno = previousSeqno + 1; seqno <= masterBlock.seqno; seqno += 1) {
+        // NOTE: It doesn't work this way due to root/file hashes mismatch.
         await this.importMasterchainBlock({ ...masterBlock, seqno });
       }
     } else {

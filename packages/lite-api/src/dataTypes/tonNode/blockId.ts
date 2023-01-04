@@ -8,7 +8,7 @@ export interface BlockId {
 
 export const blockId = {
   write: (bufferWriter: BufferWriter, blockId: BlockId) => {
-    bufferWriter.writeUInt32LE(blockId.workchain);
+    bufferWriter.writeInt32LE(blockId.workchain);
     bufferWriter.writeUint64LE(blockId.shard);
     bufferWriter.writeUInt32LE(blockId.seqno);
   },

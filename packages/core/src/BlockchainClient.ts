@@ -7,11 +7,13 @@ import { Message } from './message';
 export interface BlockchainClient {
   /* Blocks */
 
-  getLatestBlock(): Promise<BlockId>;
+  getMasterchainInfo(): Promise<BlockId>;
 
-  getShards(blockId: BlockId): Promise<BlockId[]>;
+  getAllShardsInfo(blockId: BlockId): Promise<BlockId[]>;
 
   getBlockTransactions(blockId: BlockId): Promise<TransactionId[]>;
+
+  lookupBlock(blockId: Pick<BlockId, 'workchain' | 'shard' | 'seqno'>): Promise<BlockId>;
 
   /* Accounts */
 
