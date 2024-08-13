@@ -1,30 +1,19 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/tonkite/tonkite/main/assets/tonkite.svg" height="128" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/tonkite/tonkite/main/assets/logo-dark.svg">
+    <img alt="tonkite logo" src="https://raw.githubusercontent.com/tonkite/tonkite/main/assets/logo-light.svg" width="auto" height="128">
+  </picture>
 </p>
 
-## What's inside?
+<p align="center">
+  Tonkite is a toolkit for TON development.
+<p>
 
-**Tonkite** is a toolkit for developing DApps for TON.
+---
 
-### Packages
+## Packages
 
-Core components:
-
-- [`@tonkite/core`](packages/core): core components (basic types, interfaces, etc.)
-
-Clients:
-
-- [`@tonkite/client-lite-api`](packages/client-lite-api): Lite API based TON client
-
-Low-level components:
-
-- [`@tonkite/lite-api`](packages/lite-api): low-level Lite API client
-- [`@tonkite/types`](packages/types): low-level loaders, packers and interfaces for many `block.tlb` data types
-- [`@tonkite/vm`](packages/vm): TVM emulator
-
-## Authors
-
-- Nick Nekilov ([@NickNekilov](https://t.me/NickNekilov))
+No any packages.
 
 ## License
 

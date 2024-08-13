@@ -1,26 +1,18 @@
 {
-  "name": "tonkite",
-  "version": "0.0.1",
-  "license": "Apache-2.0",
-  "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
-  "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev --parallel",
-    "lint": "turbo run lint",
-    "test": "turbo run test",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
-  },
   "devDependencies": {
-    "eslint-config-custom": "workspace:*",
-    "prettier": "^2.8.0",
-    "turbo": "latest"
+    "@ton/core": "^0.56.3",
+    "@ton/crypto": "^3.3.0",
+    "@tsconfig/node18": "^18.2.4",
+    "@types/node": "^22.2.0",
+    "prettier": "^3.3.3",
+    "typescript": "^5.5.4"
   },
-  "engines": {
-    "node": ">=14.0.0"
+  "peerDependencies": {
+    "@ton/core": "^0.56.3",
+    "@ton/crypto": "^3.3.0"
   },
-  "packageManager": "pnpm@7.13.4"
+  "scripts": {
+    "fmt:check": "prettier . --check",
+    "fmt": "prettier . --write"
+  }
 }
