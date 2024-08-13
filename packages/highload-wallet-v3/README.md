@@ -11,6 +11,11 @@
 
 ---
 
+![License](https://img.shields.io/badge/License-Apache_2.0-green.svg)
+![NPM Downloads](https://img.shields.io/npm/dm/%40tonkite%2Fhighload-wallet-v3)
+![GitHub Repo stars](https://img.shields.io/github/stars/tonkite/tonkite)
+![NPM Version](https://img.shields.io/npm/v/%40tonkite%2Fhighload-wallet-v3)
+
 ## Description
 
 Wrapper for `highload-wallet-v3`.
@@ -28,7 +33,6 @@ Initialize `TonClient`, `HighloadWalletV3`, `HighloadWalletV3QueryIdSequnce`:
 ```typescript
 import { TonClient } from '@ton/ton';
 import { HighloadWalletV3 } from '@tonkite/highload-wallet-v3';
-import { HighloadWalletV3Reader } from './highload-wallet-v3-reader';
 
 /* ... */
 
@@ -90,4 +94,4 @@ const queryIdSequence = HighloadWalletV3.restoreSequence(lastValue);
 
 ## License
 
-<a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/badge/License-Apache_2.0-green.svg" alt="License"></a>
+Tonkite is [Apache 2.0](https://opensource.org/licenses/Apache-2.0) licensed.

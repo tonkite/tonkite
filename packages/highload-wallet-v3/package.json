@@ -2,7 +2,7 @@
   "name": "@tonkite/highload-wallet-v3",
   "description": "The wrapper for highload-wallet-v3.",
   "license": "Apache-2.0",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "files": [
     "dist"
   ],
