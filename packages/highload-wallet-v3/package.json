@@ -1,0 +1,27 @@
+{
+  "name": "@tonkite/highload-wallet-v3",
+  "description": "The wrapper for highload-wallet-v3.",
+  "license": "Apache-2.0",
+  "version": "2.0.0",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "tsc",
+    "prepublish": "pnpm clean && pnpm build"
+  },
+  "devDependencies": {
+    "@ton/core": "catalog:ton",
+    "@ton/crypto": "catalog:ton",
+    "@tonkite/tsconfig": "workspace:*",
+    "@types/node": "catalog:ts",
+    "typescript": "catalog:ts"
+  },
+  "peerDependencies": {
+    "@ton/core": "catalog:ton",
+    "@ton/crypto": "catalog:ton"
+  }
+}

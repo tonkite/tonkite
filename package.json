@@ -1,18 +1,15 @@
 {
+  "private": true,
   "devDependencies": {
-    "@ton/core": "^0.56.3",
-    "@ton/crypto": "^3.3.0",
-    "@tsconfig/node18": "^18.2.4",
-    "@types/node": "^22.2.0",
-    "prettier": "^3.3.3",
-    "typescript": "^5.5.4"
-  },
-  "peerDependencies": {
-    "@ton/core": "^0.56.3",
-    "@ton/crypto": "^3.3.0"
+    "@changesets/cli": "^2.27.7",
+    "prettier": "^3.3.3"
   },
   "scripts": {
     "fmt:check": "prettier . --check",
     "fmt": "prettier . --write"
+  },
+  "engines": {
+    "node": ">=18.17.0",
+    "pnpm": ">=8.6.0"
   }
 }
