@@ -13,7 +13,9 @@
 
 ## Packages
 
-No any packages.
+Contracts:
+
+- [`@tonkite/highload-wallet-v3`](packages/highload-wallet-v3): a wrapper for `highload-wallet-v3`
 
 ## License
 
