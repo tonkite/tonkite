@@ -122,11 +122,11 @@ export class HighloadWalletV3 extends HighloadWalletV3Reader {
           ? SendMode.PAY_GAS_SEPARATELY
           : SendMode.CARRY_ALL_REMAINING_BALANCE,
       queryId,
-      createdAt: createdAt ?? Math.floor(Date.now() / 1000),
+      createdAt,
     });
   }
 
-  protected async sendExternal(
+  async sendExternal(
     provider: ContractProvider,
     secretKey: Buffer,
     {
@@ -138,7 +138,7 @@ export class HighloadWalletV3 extends HighloadWalletV3Reader {
       message: MessageRelaxed;
       mode: number;
       queryId: number;
-      createdAt: number;
+      createdAt?: number;
     },
   ) {
     const signingMessage = beginCell()
@@ -150,7 +150,7 @@ export class HighloadWalletV3 extends HighloadWalletV3Reader {
         HighloadWalletV3QueryIdSequence.SHIFT_SIZE +
           HighloadWalletV3QueryIdSequence.BIT_NUMBER_SIZE,
       )
-      .storeUint(createdAt, TIMESTAMP_SIZE)
+      .storeUint(createdAt ?? Math.floor(Date.now() / 1000), TIMESTAMP_SIZE)
       .storeUint(this.timeout, TIMEOUT_SIZE)
       .endCell();
 
