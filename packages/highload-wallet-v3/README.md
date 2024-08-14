@@ -10,18 +10,10 @@
 </p>
 
 <p align="center">
-  <a href="https://opensource.org/licenses/Apache-2.0">
-    <img alt="License" src="https://img.shields.io/badge/License-Apache_2.0-green.svg">
-  </a>
-  <a href="https://www.npmjs.com/package/wagmi">
-    <img alt="NPM Downloads" src="https://img.shields.io/npm/dm/%40tonkite%2Fhighload-wallet-v3">
-  </a>
-  <a href="https://github.com/tonkite/tonkite">
-    <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/tonkite/tonkite">
-  </a>
-  <a href="https://www.npmjs.com/package/@tonkite/highload-wallet-v3">
-    <img alt="NPM Version" src="https://img.shields.io/npm/v/%40tonkite%2Fhighload-wallet-v3">
-  </a>
+  <a href="https://opensource.org/licenses/Apache-2.0"><img alt="License" src="https://img.shields.io/badge/License-Apache_2.0-green.svg"></a>
+  <a href="https://www.npmjs.com/package/wagmi"><img alt="NPM Downloads" src="https://img.shields.io/npm/dm/%40tonkite%2Fhighload-wallet-v3"></a>
+  <a href="https://github.com/tonkite/tonkite"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/tonkite/tonkite"></a>
+  <a href="https://www.npmjs.com/package/@tonkite/highload-wallet-v3"><img alt="NPM Version" src="https://img.shields.io/npm/v/%40tonkite%2Fhighload-wallet-v3"></a>
 </p>
 
 ---
