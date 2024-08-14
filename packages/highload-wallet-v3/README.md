@@ -11,25 +11,16 @@
 
 <p align="center">
   <a href="https://opensource.org/licenses/Apache-2.0">
-    <picture>
-      <img alt="License" src="https://img.shields.io/badge/License-Apache_2.0-green.svg">
-    </picture>
+    <img alt="License" src="https://img.shields.io/badge/License-Apache_2.0-green.svg">
   </a>
   <a href="https://www.npmjs.com/package/wagmi">
-    <picture>
-      <img alt="NPM Downloads" src="https://img.shields.io/npm/dm/%40tonkite%2Fhighload-wallet-v3">
-    </picture>
+    <img alt="NPM Downloads" src="https://img.shields.io/npm/dm/%40tonkite%2Fhighload-wallet-v3">
   </a>
   <a href="https://github.com/tonkite/tonkite">
-    <picture>
-      <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/tonkite/tonkite">
-    </picture>
+    <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/tonkite/tonkite">
   </a>
-
   <a href="https://www.npmjs.com/package/@tonkite/highload-wallet-v3">
-    <picture>
-      <img alt="NPM Version" src="https://img.shields.io/npm/v/%40tonkite%2Fhighload-wallet-v3">
-    </picture>
+    <img alt="NPM Version" src="https://img.shields.io/npm/v/%40tonkite%2Fhighload-wallet-v3">
   </a>
 </p>
 
