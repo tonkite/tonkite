@@ -6,15 +6,34 @@
 </p>
 
 <p align="center">
-  Tonkite is a toolkit for TON development.
-<p>
+  Toolkit for TON development
+</p>
+
+<p align="center">
+  <a href="https://opensource.org/licenses/Apache-2.0">
+    <picture>
+      <img alt="License" src="https://img.shields.io/badge/License-Apache_2.0-green.svg">
+    </picture>
+  </a>
+  <a href="https://www.npmjs.com/package/wagmi">
+    <picture>
+      <img alt="NPM Downloads" src="https://img.shields.io/npm/dm/%40tonkite%2Fhighload-wallet-v3">
+    </picture>
+  </a>
+  <a href="https://github.com/tonkite/tonkite">
+    <picture>
+      <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/tonkite/tonkite">
+    </picture>
+  </a>
+
+  <a href="https://www.npmjs.com/package/@tonkite/highload-wallet-v3">
+    <picture>
+      <img alt="NPM Version" src="https://img.shields.io/npm/v/%40tonkite%2Fhighload-wallet-v3">
+    </picture>
+  </a>
+</p>
 
 ---
-
-![License](https://img.shields.io/badge/License-Apache_2.0-green.svg)
-![NPM Downloads](https://img.shields.io/npm/dm/%40tonkite%2Fhighload-wallet-v3)
-![GitHub Repo stars](https://img.shields.io/github/stars/tonkite/tonkite)
-![NPM Version](https://img.shields.io/npm/v/%40tonkite%2Fhighload-wallet-v3)
 
 ## Description
 
@@ -36,20 +55,23 @@ import { HighloadWalletV3 } from '@tonkite/highload-wallet-v3';
 
 /* ... */
 
+// NOTE: You may also use `TonClient4` from `@ton/ton` package.
 const tonClient = new TonClient({
   endpoint: 'https://toncenter.com/api/v2/jsonRPC',
   apiKey: 'YOUR API KEY',
 });
 
 const queryIdSequence = HighloadWalletV3.newSequence(); // or `HighloadWalletV3.restoreSequence(xxx)`
-const wallet = tonClient.open(
-  new HighloadWalletV3(queryIdSequence, keyPair.publicKey),
-);
+const wallet = tonClient.open(new HighloadWalletV3(queryIdSequence, keyPair.publicKey));
 ```
 
 Send a batch of messages:
 
 ```typescript
+import { Address, SendMode, internal, toNano, comment } from '@ton/core';
+
+/* ... */
+
 await wallet.sendBatch(keyPair.secretKey, {
   messages: [
     {
@@ -57,39 +79,45 @@ await wallet.sendBatch(keyPair.secretKey, {
       message: internal({
         to: Address.parse('UQDz0wQL6EEdgbPkFgS7nNmywzr468AvgLyhH7PIMALxPEND'),
         value: toNano('0.005'),
-        body: beginCell().storeUint(0, 32).storeStringTail('Hello.').endCell(),
-      }),
-    },
-    {
-      mode: SendMode.PAY_GAS_SEPARATELY,
-      message: internal({
-        to: Address.parse('UQDz0wQL6EEdgbPkFgS7nNmywzr468AvgLyhH7PIMALxPEND'),
-        value: toNano('0.005'),
-        body: beginCell().storeUint(0, 32).storeStringTail('Hello.').endCell(),
+        body: comment('Hello Tonkite!'),
       }),
     },
     /* ... */
   ],
+
   // NOTE: This it subtotal for all messages + fees.
   //       This value can be omitted, but it's recommended to specify it.
   //       Otherwise, batches will be sent in different blocks (e.a. time-consuming).
   valuePerBatch: toNano('0.015'),
+
   // NOTE: Time-shift because time may be out of sync.
   //       The contract accepts older messages, but not those ahead of time.
   createdAt: Math.floor(Date.now() / 1000) - 60,
 });
 ```
 
-Store a sequence state during a `timeout` time-window:
+Store a final sequence state during a `timeout` time-window:
 
 ```typescript
-// Store it somewhere:
+// Store it somewhere after all the operations:
 const lastValue = queryIdSequence.current();
 
 /* ... */
 
 // Restore it next time:
 const queryIdSequence = HighloadWalletV3.restoreSequence(lastValue);
+```
+
+## Emergency Mode
+
+For emergency cases, the wrapper supports emergency mode.
+A special request identifier is reserved for this, which is not generated in normal mode.
+
+To use emergency mode:
+
+```typescript
+// NOTE: In this case, `sequence.next()` doesn't work, since the emergency queryId is the latest possible.
+const queryIdSequence = HighloadWalletV3.emergencySequence();
 ```
 
 ## License
