@@ -116,7 +116,6 @@ A special request identifier is reserved for this, which is not generated in nor
 To use emergency mode:
 
 ```typescript
-// NOTE: In this case, `sequence.next()` doesn't work, since the emergency queryId is the latest possible.
 const queryIdSequence = HighloadWalletV3.emergencySequence();
 ```
 
