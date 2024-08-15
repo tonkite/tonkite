@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  Toolkit for TON development.
+  Toolkit for TON development
 <p>
 
 <p align="center">
@@ -20,7 +20,7 @@
 
 ## Description
 
-Wrapper for `highload-wallet-v3`.
+Wrapper for interacting with the `highload-wallet-v3` contract.
 
 ## Installation
 
@@ -68,13 +68,17 @@ await wallet.sendBatch(keyPair.secretKey, {
     /* ... */
   ],
 
-  // NOTE: This it subtotal for all messages + fees.
-  //       This value can be omitted, but it's recommended to specify it.
-  //       Otherwise, batches will be sent in different blocks (e.a. time-consuming).
+  /*
+   * NOTE: This it subtotal for all messages + fees.
+   *       This value can be omitted, but it's recommended to specify it.
+   *       Otherwise, batches will be sent in different blocks (e.a. time-consuming).
+   */
   valuePerBatch: toNano('0.015'),
 
-  // NOTE: Time-shift because time may be out of sync.
-  //       The contract accepts older messages, but not those ahead of time.
+  /*
+   * NOTE: Time-shift because time may be out of sync.
+   *       The contract accepts older messages, but not those ahead of time.
+   */
   createdAt: Math.floor(Date.now() / 1000) - 60,
 });
 ```
