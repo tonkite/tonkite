@@ -2,10 +2,7 @@ import { Address, Cell, Contract, ContractProvider } from '@ton/core';
 import { HighloadWalletV3QueryIdSequence } from './highload-wallet-v3-query-id-sequence';
 
 export class HighloadWalletV3Reader implements Contract {
-  constructor(
-    readonly address: Address,
-    readonly init?: { code: Cell; data: Cell },
-  ) {}
+  constructor(readonly address: Address) {}
 
   async getPublicKey(provider: ContractProvider) {
     const { stack } = await provider.get('get_public_key', []);

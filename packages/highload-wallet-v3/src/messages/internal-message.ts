@@ -7,7 +7,6 @@ import {
   storeOutList,
   Writable,
 } from '@ton/core';
-import { HighloadWalletV3QueryIdSequence } from '../highload-wallet-v3-query-id-sequence';
 
 export class InternalMessage implements Writable {
   /**
@@ -20,7 +19,7 @@ export class InternalMessage implements Writable {
     public readonly actions: OutActionSendMsg[],
   ) {
     if (actions.length > 254) {
-      throw new Error('Max allowed action count is 254.');
+      throw new Error('The maximum allowed action count is 254.');
     }
   }
 

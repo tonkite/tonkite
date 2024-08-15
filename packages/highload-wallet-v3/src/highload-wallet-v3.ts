@@ -17,6 +17,7 @@
 import {
   beginCell,
   Cell,
+  Contract,
   contractAddress,
   ContractProvider,
   internal,
@@ -53,9 +54,11 @@ export function highloadWalletV3ConfigToCell({
     .endCell();
 }
 
-export class HighloadWalletV3 extends HighloadWalletV3Reader {
+export class HighloadWalletV3 extends HighloadWalletV3Reader implements Contract {
   static readonly DEFAULT_SUBWALLET_ID = 0x10ad;
   static readonly DEFAULT_TIMEOUT = 60 * 60 * 24; // 24 hours
+
+  readonly init: { code: Cell; data: Cell };
 
   constructor(
     readonly sequence: HighloadWalletV3QueryIdSequence,
@@ -74,7 +77,8 @@ export class HighloadWalletV3 extends HighloadWalletV3Reader {
       }),
     };
 
-    super(contractAddress(workchain, init), init);
+    super(contractAddress(workchain, init));
+    this.init = init;
   }
 
   static newSequence() {
@@ -116,7 +120,11 @@ export class HighloadWalletV3 extends HighloadWalletV3Reader {
     const queryId = this.sequence.next();
 
     return this.sendExternal(provider, secretKey, {
-      message: this.rollupActions(actions, valuePerBatch ?? 0n, queryId),
+      message: internal({
+        to: this.address,
+        value: valuePerBatch ?? 0n,
+        body: new InternalMessage(queryId, actions).toCell(),
+      }),
       mode:
         valuePerBatch && valuePerBatch > 0n
           ? SendMode.PAY_GAS_SEPARATELY
@@ -160,24 +168,5 @@ export class HighloadWalletV3 extends HighloadWalletV3Reader {
         .storeRef(signingMessage)
         .endCell(),
     );
-  }
-
-  private rollupActions(actions: OutActionSendMsg[], valuePerBatch: bigint, queryId: number) {
-    if (actions.length > 254) {
-      const tail = actions.splice(253);
-
-      actions.push({
-        type: 'sendMsg',
-        mode:
-          valuePerBatch > 0n ? SendMode.PAY_GAS_SEPARATELY : SendMode.CARRY_ALL_REMAINING_BALANCE,
-        outMsg: this.rollupActions(tail, valuePerBatch, queryId),
-      });
-    }
-
-    return internal({
-      to: this.address,
-      value: valuePerBatch,
-      body: new InternalMessage(queryId, actions).toCell(),
-    });
   }
 }

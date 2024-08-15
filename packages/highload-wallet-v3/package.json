@@ -1,7 +1,7 @@
 {
   "name": "@tonkite/highload-wallet-v3",
   "description": "The wrapper for highload-wallet-v3.",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "license": "Apache-2.0",
   "url": "https://github.com/tonkite/tonkite/tree/main/packages/highload-wallet-v3#readme",
   "repository": {
