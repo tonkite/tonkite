@@ -24,6 +24,19 @@ Wrapper for interacting with the `highload-wallet-v3` contract.
 
 ## Installation
 
+Using npm:
+
+```shell
+npm install --save @tonkite/highload-wallet-v3
+```
+
+Using Yarn:
+```shell
+yarn add @tonkite/highload-wallet-v3
+```
+
+Using pnpm:
+
 ```shell
 pnpm add @tonkite/highload-wallet-v3
 ```
