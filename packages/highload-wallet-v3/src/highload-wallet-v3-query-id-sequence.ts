@@ -16,6 +16,7 @@
 
 export class HighloadWalletV3QueryIdSequence {
   static readonly BIT_NUMBER_SIZE = 10; // 10 bit
+  static readonly BIT_NUMBER_MASK = 1023;
   static readonly SHIFT_SIZE = 13;
   static readonly MAX_BIT_NUMBER = 1022;
   static readonly MAX_SHIFT = 8191;
@@ -50,7 +51,7 @@ export class HighloadWalletV3QueryIdSequence {
 
   static restore(queryId: number): HighloadWalletV3QueryIdSequence {
     const shift = queryId >> HighloadWalletV3QueryIdSequence.BIT_NUMBER_SIZE;
-    const bitNumber = queryId & 1023;
+    const bitNumber = queryId & HighloadWalletV3QueryIdSequence.BIT_NUMBER_MASK;
 
     return new HighloadWalletV3QueryIdSequence(shift, bitNumber);
   }
@@ -75,14 +76,7 @@ export class HighloadWalletV3QueryIdSequence {
       nextBitNumber = 0;
     }
 
-    if (
-      nextShift === HighloadWalletV3QueryIdSequence.MAX_SHIFT &&
-      nextBitNumber === HighloadWalletV3QueryIdSequence.MAX_BIT_NUMBER
-    ) {
-      throw new Error('Reserved for emergency mode.');
-    }
-
-    this.shift = nextShift;
+    this.shift = nextShift % HighloadWalletV3QueryIdSequence.MAX_SHIFT;
     this.bitNumber = nextBitNumber;
 
     return this.current();

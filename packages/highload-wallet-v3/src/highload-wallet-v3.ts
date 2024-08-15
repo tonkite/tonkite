@@ -117,9 +117,9 @@ export class HighloadWalletV3 extends HighloadWalletV3Reader implements Contract
       }),
     );
 
-    const queryId = this.sequence.next();
+    const queryId = this.sequence.current();
 
-    return this.sendExternal(provider, secretKey, {
+    await this.sendExternal(provider, secretKey, {
       message: internal({
         to: this.address,
         value: valuePerBatch ?? 0n,
@@ -132,6 +132,8 @@ export class HighloadWalletV3 extends HighloadWalletV3Reader implements Contract
       queryId,
       createdAt,
     });
+
+    this.sequence.next();
   }
 
   async sendExternal(
