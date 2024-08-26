@@ -5,10 +5,6 @@
   </picture>
 </p>
 
-<p align="center">
-  Toolkit for TON development
-<p>
-
 ---
 
 ## Packages

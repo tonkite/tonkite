@@ -6,10 +6,6 @@
 </p>
 
 <p align="center">
-  Toolkit for TON development
-<p>
-
-<p align="center">
   <a href="https://www.npmjs.com/package/@tonkite/highload-wallet-v3"><img alt="NPM Version" src="https://img.shields.io/npm/v/%40tonkite%2Fhighload-wallet-v3"></a>
   <a href="https://www.npmjs.com/package/wagmi"><img alt="NPM Downloads" src="https://img.shields.io/npm/dm/%40tonkite%2Fhighload-wallet-v3"></a>
   <a href="https://github.com/tonkite/tonkite"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/tonkite/tonkite"></a>
