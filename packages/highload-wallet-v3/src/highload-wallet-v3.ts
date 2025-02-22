@@ -119,7 +119,7 @@ export class HighloadWalletV3 extends HighloadWalletV3Reader implements Contract
 
     const queryId = this.sequence.current();
 
-    await this.sendExternal(provider, secretKey, {
+    return this.sendExternal(provider, secretKey, {
       message: internal({
         to: this.address,
         value: valuePerBatch ?? 0n,
@@ -148,7 +148,7 @@ export class HighloadWalletV3 extends HighloadWalletV3Reader implements Contract
       queryId: number;
       createdAt?: number;
     },
-  ) {
+  ): Promise<Cell> {
     const signingMessage = beginCell()
       .storeUint(this.subwalletId, 32)
       .storeRef(beginCell().store(storeMessageRelaxed(message)).endCell())
@@ -162,11 +162,13 @@ export class HighloadWalletV3 extends HighloadWalletV3Reader implements Contract
       .storeUint(this.timeout, TIMEOUT_SIZE)
       .endCell();
 
-    await provider.external(
-      beginCell()
-        .storeBuffer(sign(signingMessage.hash(), secretKey))
-        .storeRef(signingMessage)
-        .endCell(),
-    );
+    const externalMessage = beginCell()
+      .storeBuffer(sign(signingMessage.hash(), secretKey))
+      .storeRef(signingMessage)
+      .endCell();
+
+    await provider.external(externalMessage);
+
+    return externalMessage;
   }
 }
