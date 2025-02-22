@@ -132,8 +132,6 @@ export class HighloadWalletV3 extends HighloadWalletV3Reader implements Contract
       queryId,
       createdAt,
     });
-
-    this.sequence.next();
   }
 
   async sendExternal(

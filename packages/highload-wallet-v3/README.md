@@ -29,6 +29,7 @@ npm install --save @tonkite/highload-wallet-v3
 ```
 
 Using Yarn:
+
 ```shell
 yarn add @tonkite/highload-wallet-v3
 ```
@@ -92,6 +93,8 @@ await wallet.sendBatch(keyPair.secretKey, {
    */
   createdAt: Math.floor(Date.now() / 1000) - 60,
 });
+
+this.sequence.next();
 ```
 
 Store a final sequence state during a `timeout` time-window:
